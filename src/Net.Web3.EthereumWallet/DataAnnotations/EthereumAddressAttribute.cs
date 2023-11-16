@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Net.Web3.EthereumWallet.Extensions;
+using System.ComponentModel.DataAnnotations;
 
-namespace Net.Web3.EthereumWallet;
+namespace Net.Web3.EthereumWallet.DataAnnotations;
 
 public class EthereumAddressAttribute : ValidationAttribute
 {

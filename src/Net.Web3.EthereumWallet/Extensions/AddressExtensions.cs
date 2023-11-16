@@ -1,4 +1,4 @@
-﻿namespace Net.Web3.EthereumWallet;
+﻿namespace Net.Web3.EthereumWallet.Extensions;
 
 public static class AddressExtensions
 {
