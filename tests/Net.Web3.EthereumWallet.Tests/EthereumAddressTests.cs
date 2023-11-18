@@ -1,12 +1,11 @@
 using Xunit;
 using FluentAssertions;
+using static Net.Web3.EthereumWallet.EthereumAddress;
 
 namespace Net.Web3.EthereumWallet.Tests;
 
 public class EthereumAddressTests
 {
-    private const string ZeroAddress = "0x0000000000000000000000000000000000000000";
-
     [Fact]
     internal void InvalidAddress_InvalidLength_ThrowException()
     {
