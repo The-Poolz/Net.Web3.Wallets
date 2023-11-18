@@ -4,6 +4,7 @@ namespace Net.Web3.EthereumWallet;
 
 public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
 {
+    public static readonly string ZeroAddress = "0x0000000000000000000000000000000000000000";
     public string Address { get; }
 
     public EthereumAddress(string address)
