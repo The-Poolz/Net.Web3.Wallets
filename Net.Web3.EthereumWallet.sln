@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Web3.EthereumWallet", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A79DCE70-506A-4B77-BF33-6A001C33079C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{599D5F32-5DBB-46F7-A77B-5514DC90B36E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Web3.EthereumWallet.Tests", "tests\Net.Web3.EthereumWallet.Tests\Net.Web3.EthereumWallet.Tests.csproj", "{78159A1C-25DE-442C-BF14-9A465D6D602C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{A317DABA-3FBE-49D4-8D35-7A9C7A8C94DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A317DABA-3FBE-49D4-8D35-7A9C7A8C94DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A317DABA-3FBE-49D4-8D35-7A9C7A8C94DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78159A1C-25DE-442C-BF14-9A465D6D602C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78159A1C-25DE-442C-BF14-9A465D6D602C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78159A1C-25DE-442C-BF14-9A465D6D602C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78159A1C-25DE-442C-BF14-9A465D6D602C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A317DABA-3FBE-49D4-8D35-7A9C7A8C94DC} = {A79DCE70-506A-4B77-BF33-6A001C33079C}
+		{78159A1C-25DE-442C-BF14-9A465D6D602C} = {599D5F32-5DBB-46F7-A77B-5514DC90B36E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE49C8A7-BCCD-4CBE-BDCF-91BC58E812AA}

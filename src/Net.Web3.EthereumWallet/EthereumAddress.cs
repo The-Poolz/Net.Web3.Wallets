@@ -2,7 +2,7 @@
 
 namespace Net.Web3.EthereumWallet;
 
-public sealed class EthereumAddress : IEquatable<EthereumAddress>, IComparable<EthereumAddress>, ICloneable
+public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
 {
     public string Address { get; }
 
@@ -61,14 +61,6 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, IComparable<E
     }
     #endregion
 
-    #region IComparable
-    public int CompareTo(EthereumAddress? other)
-    {
-        if (ReferenceEquals(this, other)) return 0;
-        return other is null ? 1 : string.Compare(Address, other.Address, StringComparison.Ordinal);
-    }
-    #endregion
-
     #region Comparison operators
     public static bool operator ==(EthereumAddress left, EthereumAddress right)
     {
@@ -77,7 +69,7 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, IComparable<E
 
     public static bool operator !=(EthereumAddress left, EthereumAddress right)
     {
-        return !(left == right);
+        return left.Address != right.Address;
     }
     #endregion
 }
