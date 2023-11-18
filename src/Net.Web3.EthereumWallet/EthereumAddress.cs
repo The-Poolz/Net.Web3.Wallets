@@ -2,11 +2,26 @@
 
 namespace Net.Web3.EthereumWallet;
 
+/// <summary>
+/// Represents a strongly-typed Ethereum address.
+/// </summary>
 public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
 {
+    /// <summary>
+    /// Represents the zero address (0x0) in Ethereum.
+    /// </summary>
     public static readonly string ZeroAddress = "0x0000000000000000000000000000000000000000";
+
+    /// <summary>
+    /// Gets the Ethereum address as a string.
+    /// </summary>
     public string Address { get; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EthereumAddress"/> class.
+    /// </summary>
+    /// <param name="address">The Ethereum address as a hex string.</param>
+    /// <exception cref="ArgumentException">Thrown if the address is not in a valid Ethereum hex format.</exception>
     public EthereumAddress(string address)
     {
         if (!address.IsValidEthereumAddressHexFormat())
@@ -17,17 +32,29 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
         Address = address;
     }
 
+    /// <summary>
+    /// Returns the string representation of the Ethereum address.
+    /// </summary>
+    /// <returns>The Ethereum address as a string.</returns>
     public override string ToString()
     {
         return Address;
     }
 
     #region Implicit conversion operators
+    /// <summary>
+    /// Implicitly converts an <see cref="EthereumAddress"/> instance to its string representation.
+    /// </summary>
+    /// <param name="ethereumAddress">The EthereumAddress instance.</param>
     public static implicit operator string(EthereumAddress ethereumAddress)
     {
         return ethereumAddress.Address;
     }
 
+    /// <summary>
+    /// Implicitly converts a string representation of an Ethereum address to an <see cref="EthereumAddress"/> instance.
+    /// </summary>
+    /// <param name="address">The Ethereum address as a string.</param>
     public static implicit operator EthereumAddress(string address)
     {
         return new EthereumAddress(address);
@@ -35,6 +62,11 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
     #endregion
 
     #region IEquatable
+    /// <summary>
+    /// Indicates whether the current object is equal to another object of the same type.
+    /// </summary>
+    /// <param name="other">An object to compare with this object.</param>
+    /// <returns>true if the current object is equal to the other parameter; otherwise, false.</returns>
     public bool Equals(EthereumAddress? other)
     {
         if (other is null) return false;
@@ -42,6 +74,11 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
         return Address == other.Address;
     }
 
+    /// <summary>
+    /// Determines whether the specified object is equal to the current object.
+    /// </summary>
+    /// <param name="obj">The object to compare with the current object.</param>
+    /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
     public override bool Equals(object? obj)
     {
         if (obj is null) return false;
@@ -49,6 +86,10 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
         return obj.GetType() == GetType() && Equals((EthereumAddress)obj);
     }
 
+    /// <summary>
+    /// Returns a hash code for this instance.
+    /// </summary>
+    /// <returns>A hash code for the current object.</returns>
     public override int GetHashCode()
     {
         return Address.GetHashCode();
@@ -56,6 +97,10 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
     #endregion
 
     #region ICloneable
+    /// <summary>
+    /// Creates a new object that is a copy of the current instance.
+    /// </summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
     public object Clone()
     {
         return new EthereumAddress(Address);
@@ -63,11 +108,23 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
     #endregion
 
     #region Comparison operators
+    /// <summary>
+    /// Compares two EthereumAddress instances for equality.
+    /// </summary>
+    /// <param name="left">The first EthereumAddress instance.</param>
+    /// <param name="right">The second EthereumAddress instance.</param>
+    /// <returns>true if the instances are equal; otherwise, false.</returns>
     public static bool operator ==(EthereumAddress left, EthereumAddress right)
     {
         return ReferenceEquals(left, right) || left.Equals(right);
     }
 
+    /// <summary>
+    /// Compares two EthereumAddress instances for inequality.
+    /// </summary>
+    /// <param name="left">The first EthereumAddress instance.</param>
+    /// <param name="right">The second EthereumAddress instance.</param>
+    /// <returns>true if the instances are not equal; otherwise, false.</returns>
     public static bool operator !=(EthereumAddress left, EthereumAddress right)
     {
         return left.Address != right.Address;
