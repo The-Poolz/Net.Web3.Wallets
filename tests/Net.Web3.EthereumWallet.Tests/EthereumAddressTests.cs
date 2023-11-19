@@ -43,6 +43,15 @@ public class EthereumAddressTests
     }
 
     [Fact]
+    internal void ImplicitConversion_FromEthereumAddressTohortString()
+    {
+        var expected = "0x0000...0000";
+        string address = new EthereumAddress(ZeroAddress).ToShortString();
+
+        address.Should().Be(expected);
+    }
+
+    [Fact]
     internal void ToString_ExpectedAddress()
     {
         var address = new EthereumAddress(ZeroAddress);

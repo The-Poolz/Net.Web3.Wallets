@@ -40,6 +40,14 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
     {
         return Address;
     }
+    /// <summary>
+    /// Returns the short string representation of the Ethereum address.
+    /// </summary>
+    /// <returns>The Ethereum address as a short string.</returns>
+    public string ToShortString()
+    {
+        return $"{Address[..6]}...{Address[^4..]}";
+    }
 
     #region Implicit conversion operators
     /// <summary>
