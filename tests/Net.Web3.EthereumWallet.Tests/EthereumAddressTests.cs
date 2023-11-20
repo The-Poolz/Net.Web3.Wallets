@@ -51,6 +51,14 @@ public class EthereumAddressTests
     }
 
     [Fact]
+    internal void ToShortAddress_ExpectedAddress()
+    {
+        var address = new EthereumAddress(ZeroAddress).ToShortAddress(3);
+
+        address.Should().Be("0x000...000");
+    }
+
+    [Fact]
     internal void Equals_ForEthereumAddress_IsEquals()
     {
         var address1 = new EthereumAddress(ZeroAddress);
