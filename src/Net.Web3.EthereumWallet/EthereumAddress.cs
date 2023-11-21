@@ -41,6 +41,27 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
         return Address;
     }
 
+    /// <summary>
+    /// Shortens an Ethereum address by retaining only a specified number of characters at the beginning and end of the address, 
+    /// and replacing the middle part with ellipses (...). This method is useful for displaying a concise version of Ethereum addresses.
+    /// <example>
+    /// <code>
+    /// string ethAddress = "0x0000000000000000000000000000000000000000";
+    /// string shortAddress = ethAddress.ToShortAddress(4); // Outputs "0x0000...0000"
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="visibleChars">The number of characters to show at the beginning and end of the address after the '0x' prefix. Defaults to 4.</param>
+    /// <remarks>
+    /// The method ensures that the '0x' prefix and the specified number of characters from both the start and the end of the address are visible.
+    /// If the address length is shorter than the expected format, or if the visible characters exceed the address length, the original address is returned.
+    /// </remarks>
+    /// <returns>
+    /// A shortened version of the Ethereum address string with the '0x' prefix, the specified number of characters visible at the start and end, 
+    /// and the middle part replaced with ellipses (...).
+    /// </returns>
+    public string ToShortAddress(byte visibleChars = 4) => Address.ToShortAddress(visibleChars);
+
     #region Implicit conversion operators
     /// <summary>
     /// Implicitly converts an <see cref="EthereumAddress"/> instance to its string representation.
