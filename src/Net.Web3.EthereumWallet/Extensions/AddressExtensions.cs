@@ -58,8 +58,10 @@ public static class AddressExtensions
     /// A shortened version of the Ethereum address string with the '0x' prefix, the specified number of characters visible at the start and end, 
     /// and the middle part replaced with ellipses (...).
     /// </returns>
-    public static string ToShortAddress(this string address, int visibleChars = 4)
+    public static string ToShortAddress(this string address, byte visibleChars = 4)
     {
+        if (visibleChars is < 1 or > 15) throw new ArgumentException("Visible characters cannot be less than 1 or greater than 15.", nameof(visibleChars));
+
         return $"{address[..(2 + visibleChars)]}...{address[^visibleChars..]}";
     }
 }
