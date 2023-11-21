@@ -148,7 +148,7 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
     /// <returns>true if the instances are not equal; otherwise, false.</returns>
     public static bool operator !=(EthereumAddress left, EthereumAddress right)
     {
-        return left.Address != right.Address;
+        return !left.Equals(right);
     }
     #endregion
 }
