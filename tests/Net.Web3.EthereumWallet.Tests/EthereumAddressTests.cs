@@ -53,6 +53,14 @@ public class EthereumAddressTests
     [Fact]
     internal void ToShortAddress_ExpectedAddress()
     {
+        Action testCode = () => new EthereumAddress(ZeroAddress).ToShortAddress(16);
+
+        testCode.Should().Throw<ArgumentException>().WithMessage("Visible characters cannot be less than 1 or greater than 15. (Parameter 'visibleChars')");
+    }
+
+    [Fact]
+    internal void ToShortAddress_ThrowException()
+    {
         var address = new EthereumAddress(ZeroAddress).ToShortAddress(3);
 
         address.Should().Be("0x000...000");

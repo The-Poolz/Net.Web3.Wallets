@@ -60,7 +60,7 @@ public sealed class EthereumAddress : IEquatable<EthereumAddress>, ICloneable
     /// A shortened version of the Ethereum address string with the '0x' prefix, the specified number of characters visible at the start and end, 
     /// and the middle part replaced with ellipses (...).
     /// </returns>
-    public string ToShortAddress(int visibleChars = 4) => Address.ToShortAddress(visibleChars);
+    public string ToShortAddress(byte visibleChars = 4) => Address.ToShortAddress(visibleChars);
 
     #region Implicit conversion operators
     /// <summary>
