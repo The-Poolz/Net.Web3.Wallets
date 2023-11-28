@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/the-poolz/net.web3.ethereumwallet/badge)](https://www.codefactor.io/repository/github/the-poolz/net.web3.ethereumwallet)
+
 # Net.Web3.EthereumWallet
 ## Description
 `Net.Web3.EthereumWallet` is a C# library for handling Ethereum addresses. It provides a convenient way to validate, represent, and manipulate Ethereum addresses in .NET applications.
