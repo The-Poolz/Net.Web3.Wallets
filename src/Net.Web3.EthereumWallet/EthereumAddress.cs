@@ -11,7 +11,7 @@ namespace Net.Web3.EthereumWallet
         /// <summary>
         /// Represents the zero address (0x0) in Ethereum.
         /// </summary>
-        public static readonly string ZeroAddress = "0x0000000000000000000000000000000000000000";
+        public const string ZeroAddress = "0x0000000000000000000000000000000000000000";
 
         /// <summary>
         /// Gets the Ethereum address as a string.
