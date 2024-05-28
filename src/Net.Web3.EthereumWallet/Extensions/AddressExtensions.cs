@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace Net.Web3.EthereumWallet.Extensions
 {
@@ -8,6 +9,22 @@ namespace Net.Web3.EthereumWallet.Extensions
     /// </summary>
     public static class AddressExtensions
     {
+        public static string ConvertToChecksumAddress(this string address)
+        {
+            address = address.ToLower()[2..];
+            var addressHash = new Sha3Keccack().CalculateHash(address);
+            var checksumAddress = new StringBuilder("0x");
+
+            for (var i = 0; i < address.Length; i++)
+            {
+                if (int.Parse(addressHash[i].ToString(), System.Globalization.NumberStyles.HexNumber) > 7)
+                    checksumAddress.Append(address[i].ToString().ToUpper());
+                else
+                    checksumAddress.Append(address[i]);
+            }
+            return checksumAddress.ToString();
+        }
+
         /// <summary>
         /// Determines whether a string is a valid Ethereum address in hexadecimal format.
         /// </summary>
