@@ -1,7 +1,6 @@
 ﻿using System.Text;
-using Net.Web3.EthereumWallet.Internal;
 
-namespace Net.Web3.EthereumWallet
+namespace Net.Web3.EthereumWallet.Internal
 {
     internal class Sha3Keccack
     {
