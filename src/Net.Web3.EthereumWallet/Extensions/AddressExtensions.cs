@@ -33,6 +33,23 @@ namespace Net.Web3.EthereumWallet.Extensions
             return checksumAddress.ToString();
         }
 
+        public static bool IsChecksumAddress(this string address, BigInteger? chainId = null)
+        {
+            if (string.IsNullOrEmpty(address)) return false;
+            address = address.RemoveHexPrefix();
+            var prefix = chainId != null ? chainId + "0x" : "";
+            var addressHash = new Sha3Keccack().CalculateHash(prefix + address.ToLower());
+
+            for (var i = 0; i < address.Length; i++)
+            {
+                var value = int.Parse(addressHash[i].ToString(), NumberStyles.HexNumber);
+                if (value > 7 && address[i].ToString().ToUpper() != address[i].ToString() ||
+                    value <= 7 && address[i].ToString().ToLower() != address[i].ToString())
+                    return false;
+            }
+            return true;
+        }
+
         /// <summary>
         /// Determines whether a string is a valid Ethereum address in hexadecimal format.
         /// </summary>
@@ -42,7 +59,7 @@ namespace Net.Web3.EthereumWallet.Extensions
         {
             if (string.IsNullOrEmpty(address) || !address.HasHexPrefix()) return false;
 
-            address = address[2..];
+            address = address.RemoveHexPrefix();
             return address.Length == 40 && address.IsHex();
         }
 
@@ -54,6 +71,11 @@ namespace Net.Web3.EthereumWallet.Extensions
         public static bool HasHexPrefix(this string value)
         {
             return value.StartsWith("0x");
+        }
+
+        public static string RemoveHexPrefix(this string value)
+        {
+            return value[(value.StartsWith("0x") ? 2 : 0)..];
         }
 
         /// <summary>
