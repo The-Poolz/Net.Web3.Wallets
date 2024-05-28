@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 namespace Net.Web3.EthereumWallet.Internal
@@ -53,9 +53,9 @@ namespace Net.Web3.EthereumWallet.Internal
             for (t = 1; t < 25; t++)
             {
                 rhoOffset = rhoOffset + t & 63;
-                keccakRhoOffsets[x % 5 + 5 * (y % 5)] = rhoOffset;
-                newX = (0 * x + 1 * y) % 5;
-                newY = (2 * x + 3 * y) % 5;
+                keccakRhoOffsets[(x % 5) + (5 * (y % 5))] = rhoOffset;
+                newX = ((0 * x) + (1 * y)) % 5;
+                newY = ((2 * x) + (3 * y)) % 5;
                 x = newX;
                 y = newY;
             }
@@ -136,7 +136,7 @@ namespace Net.Web3.EthereumWallet.Internal
                     InitSponge(1600 - (bitLength << 1));
                     break;
                 default:
-                    throw new ArgumentException("must be one of 128, 224, 256, 288, 384, or 512.", "bitLength");
+                    throw new ArgumentException("must be one of 128, 224, 256, 288, 384, or 512.", nameof(bitLength));
             }
         }
 
@@ -151,7 +151,7 @@ namespace Net.Web3.EthereumWallet.Internal
             bitsInQueue = 0;
             squeezing = false;
             bitsAvailableForSqueezing = 0;
-            fixedOutputLength = 1600 - r >> 1;
+            fixedOutputLength = (1600 - r) >> 1;
         }
 
         protected void Absorb(byte[] data, int off, int len)
@@ -220,7 +220,7 @@ namespace Net.Web3.EthereumWallet.Internal
                 state[full] ^= Pack.LE_To_UInt64(dataQueue, off) & mask;
             }
 
-            state[rate - 1 >> 6] ^= 1UL << 63;
+            state[(rate - 1) >> 6] ^= 1UL << 63;
 
             KeccakPermutation();
             KeccakExtract();
@@ -249,7 +249,7 @@ namespace Net.Web3.EthereumWallet.Internal
                 }
 
                 int partialBlock = (int)Math.Min(bitsAvailableForSqueezing, outputLength - i);
-                Array.Copy(dataQueue, rate - bitsAvailableForSqueezing >> 3, output, off + (int)(i >> 3),
+                Array.Copy(dataQueue, (rate - bitsAvailableForSqueezing) >> 3, output, off + (int)(i >> 3),
                     partialBlock >> 3);
                 bitsAvailableForSqueezing -= partialBlock;
                 i += partialBlock;
@@ -383,11 +383,11 @@ namespace Net.Web3.EthereumWallet.Internal
 
             for (int yBy5 = 0; yBy5 < 25; yBy5 += 5)
             {
-                chiC0 = A[0 + yBy5] ^ ~A[(0 + 1) % 5 + yBy5] & A[(0 + 2) % 5 + yBy5];
-                chiC1 = A[1 + yBy5] ^ ~A[(1 + 1) % 5 + yBy5] & A[(1 + 2) % 5 + yBy5];
-                chiC2 = A[2 + yBy5] ^ ~A[(2 + 1) % 5 + yBy5] & A[(2 + 2) % 5 + yBy5];
-                chiC3 = A[3 + yBy5] ^ ~A[(3 + 1) % 5 + yBy5] & A[(3 + 2) % 5 + yBy5];
-                chiC4 = A[4 + yBy5] ^ ~A[(4 + 1) % 5 + yBy5] & A[(4 + 2) % 5 + yBy5];
+                chiC0 = A[0 + yBy5] ^ ~A[((0 + 1) % 5) + yBy5] & A[((0 + 2) % 5) + yBy5];
+                chiC1 = A[1 + yBy5] ^ ~A[((1 + 1) % 5) + yBy5] & A[((1 + 2) % 5) + yBy5];
+                chiC2 = A[2 + yBy5] ^ ~A[((2 + 1) % 5) + yBy5] & A[((2 + 2) % 5) + yBy5];
+                chiC3 = A[3 + yBy5] ^ ~A[((3 + 1) % 5) + yBy5] & A[((3 + 2) % 5) + yBy5];
+                chiC4 = A[4 + yBy5] ^ ~A[((4 + 1) % 5) + yBy5] & A[((4 + 2) % 5) + yBy5];
 
                 A[0 + yBy5] = chiC0;
                 A[1 + yBy5] = chiC1;

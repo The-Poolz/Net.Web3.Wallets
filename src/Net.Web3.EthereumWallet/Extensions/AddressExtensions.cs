@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text;
 using System.Numerics;
@@ -63,8 +63,8 @@ namespace Net.Web3.EthereumWallet.Extensions
             for (var i = 0; i < address.Length; i++)
             {
                 var value = int.Parse(addressHash[i].ToString(), NumberStyles.HexNumber);
-                if (value > 7 && address[i].ToString().ToUpper() != address[i].ToString() ||
-                    value <= 7 && address[i].ToString().ToLower() != address[i].ToString())
+                if ((value > 7 && address[i].ToString().ToUpper() != address[i].ToString()) ||
+                    (value <= 7 && address[i].ToString().ToLower() != address[i].ToString()))
                     return false;
             }
             return true;
