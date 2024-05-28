@@ -43,6 +43,10 @@ namespace Net.Web3.EthereumWallet.Extensions
             return checksumAddress.ToString();
         }
 
+        /// <inheritdoc cref="ConvertToChecksumAddress(string, BigInteger?)"/>
+        public static string ConvertToChecksumAddress(this EthereumAddress address, BigInteger? chainId = null) =>
+            ConvertToChecksumAddress(address.Address, chainId);
+
         /// <summary>
         /// Validates whether a given Ethereum address matches the checksum format as per EIP-55, optionally considering a chain-specific prefix.
         /// </summary>
@@ -69,6 +73,10 @@ namespace Net.Web3.EthereumWallet.Extensions
             }
             return true;
         }
+
+        /// <inheritdoc cref="IsChecksumAddress(string, BigInteger?)"/>
+        public static bool IsChecksumAddress(this EthereumAddress address, BigInteger? chainId = null) =>
+            IsChecksumAddress(address.Address, chainId);
 
         /// <summary>
         /// Determines whether a string is a valid Ethereum address in hexadecimal format.
