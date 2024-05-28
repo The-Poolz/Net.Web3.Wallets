@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using System.Numerics;
+using System.Globalization;
 
 namespace Net.Web3.EthereumWallet.Extensions
 {
@@ -9,19 +11,25 @@ namespace Net.Web3.EthereumWallet.Extensions
     /// </summary>
     public static class AddressExtensions
     {
-        public static string ConvertToChecksumAddress(this string address)
+        public static string ConvertToChecksumAddress(this string address, BigInteger? chainId = null)
         {
             address = address.ToLower()[2..];
-            var addressHash = new Sha3Keccack().CalculateHash(address);
+            var prefix = chainId != null ? chainId + "0x" : "";
+            var addressHash = new Sha3Keccack().CalculateHash(prefix + address);
             var checksumAddress = new StringBuilder("0x");
 
             for (var i = 0; i < address.Length; i++)
             {
-                if (int.Parse(addressHash[i].ToString(), System.Globalization.NumberStyles.HexNumber) > 7)
+                if (int.Parse(addressHash[i].ToString(), NumberStyles.HexNumber) > 7)
+                {
                     checksumAddress.Append(address[i].ToString().ToUpper());
+                }
                 else
+                {
                     checksumAddress.Append(address[i]);
+                }
             }
+
             return checksumAddress.ToString();
         }
 
