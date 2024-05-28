@@ -11,9 +11,19 @@ namespace Net.Web3.EthereumWallet.Extensions
     /// </summary>
     public static class AddressExtensions
     {
+        /// <summary>
+        /// Converts an Ethereum address to its checksum address format as per EIP-55, which may involve a chain-specific prefix.
+        /// </summary>
+        /// <param name="address">The Ethereum address to convert.</param>
+        /// <param name="chainId">Optional. The chain ID to use as a prefix in the hash calculation for checksum.</param>
+        /// <returns>A checksummed Ethereum address with the '0x' prefix.</returns>
+        /// <remarks>
+        /// This method calculates the checksum using the SHA3 Keccak hash of the address. Each character in the original
+        /// address is then capitalized if the corresponding character in the hash is greater than 7.
+        /// </remarks>
         public static string ConvertToChecksumAddress(this string address, BigInteger? chainId = null)
         {
-            address = address.ToLower()[2..];
+            address = address.ToLower().RemoveHexPrefix();
             var prefix = chainId != null ? chainId + "0x" : "";
             var addressHash = new Sha3Keccack().CalculateHash(prefix + address);
             var checksumAddress = new StringBuilder("0x");
@@ -33,6 +43,16 @@ namespace Net.Web3.EthereumWallet.Extensions
             return checksumAddress.ToString();
         }
 
+        /// <summary>
+        /// Validates whether a given Ethereum address matches the checksum format as per EIP-55, optionally considering a chain-specific prefix.
+        /// </summary>
+        /// <param name="address">The Ethereum address to validate.</param>
+        /// <param name="chainId">Optional. The chain ID to use as a prefix when computing the checksum for comparison.</param>
+        /// <returns>true if the address is in valid checksum format; otherwise, false.</returns>
+        /// <remarks>
+        /// This method performs checksum validation by recalculating the hash with the same chain prefix used in checksum creation,
+        /// then compares each character of the original address against the hash to determine if it matches the checksum format.
+        /// </remarks>
         public static bool IsChecksumAddress(this string address, BigInteger? chainId = null)
         {
             if (string.IsNullOrEmpty(address)) return false;
@@ -73,6 +93,15 @@ namespace Net.Web3.EthereumWallet.Extensions
             return value.StartsWith("0x");
         }
 
+        /// <summary>
+        /// Removes the '0x' prefix from a hexadecimal string, if present.
+        /// </summary>
+        /// <param name="value">The hexadecimal string from which to remove the '0x' prefix.</param>
+        /// <returns>The hexadecimal string without the '0x' prefix.</returns>
+        /// <remarks>
+        /// This method checks the beginning of the string for the '0x' prefix and removes it if found, returning the rest of the string.
+        /// If the '0x' prefix is not found, the original string is returned unchanged.
+        /// </remarks>
         public static string RemoveHexPrefix(this string value)
         {
             return value[(value.StartsWith("0x") ? 2 : 0)..];
