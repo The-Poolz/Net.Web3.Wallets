@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Numerics;
 using System.Globalization;
+using Net.Web3.EthereumWallet.Internal;
 
 namespace Net.Web3.EthereumWallet.Extensions
 {
