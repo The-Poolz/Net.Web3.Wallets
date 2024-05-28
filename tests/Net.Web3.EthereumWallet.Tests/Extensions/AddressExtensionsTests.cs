@@ -20,7 +20,9 @@ public class AddressExtensionsTests
         internal void ValidateAddressConversion(string addressOriginal, string addressExpected, int? network)
         {
             var converted = addressOriginal.ConvertToChecksumAddress(network);
+            converted.Should().Be(addressExpected);
 
+            converted = new EthereumAddress(addressOriginal).ConvertToChecksumAddress(network);
             converted.Should().Be(addressExpected);
         }
     }
@@ -46,7 +48,9 @@ public class AddressExtensionsTests
         public void ValidateAddress(string address, int? network, bool isValid)
         {
             var result = address.IsChecksumAddress(network);
+            result.Should().Be(isValid);
 
+            result = new EthereumAddress(address).IsChecksumAddress(network);
             result.Should().Be(isValid);
         }
     }
