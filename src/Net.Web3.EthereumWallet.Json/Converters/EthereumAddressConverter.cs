@@ -16,11 +16,11 @@ namespace Net.Web3.EthereumWallet.Json.Converters
             writer.WriteValue(value.Address);
         }
 
-        public override EthereumAddress ReadJson(JsonReader reader, Type objectType, EthereumAddress? existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override EthereumAddress? ReadJson(JsonReader reader, Type objectType, EthereumAddress? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null)
             {
-                throw new JsonSerializationException($"Cannot convert null value to {nameof(EthereumAddress)}.");
+                return null;
             }
 
             if (reader.TokenType != JsonToken.String)

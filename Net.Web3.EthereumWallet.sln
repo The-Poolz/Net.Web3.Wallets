@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Web3.EthereumWallet.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Web3.EthereumWallet", "src\Net.Web3.EthereumWallet\Net.Web3.EthereumWallet.csproj", "{733DE76C-2C79-4130-A472-AE4E1F4F9E44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Web3.EthereumWallet.Json", "src\Net.Web3.EthereumWallet.Json\Net.Web3.EthereumWallet.Json.csproj", "{76AB7E3C-762B-4025-9596-B8FFA283B481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Web3.EthereumWallet.Json", "src\Net.Web3.EthereumWallet.Json\Net.Web3.EthereumWallet.Json.csproj", "{76AB7E3C-762B-4025-9596-B8FFA283B481}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Web3.EthereumWallet.Json.Tests", "tests\Net.Web3.EthereumWallet.Json.Tests\Net.Web3.EthereumWallet.Json.Tests.csproj", "{5DA8B683-F74E-44ED-9912-7DA2D06D030C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{76AB7E3C-762B-4025-9596-B8FFA283B481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76AB7E3C-762B-4025-9596-B8FFA283B481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76AB7E3C-762B-4025-9596-B8FFA283B481}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA8B683-F74E-44ED-9912-7DA2D06D030C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA8B683-F74E-44ED-9912-7DA2D06D030C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA8B683-F74E-44ED-9912-7DA2D06D030C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA8B683-F74E-44ED-9912-7DA2D06D030C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{78159A1C-25DE-442C-BF14-9A465D6D602C} = {599D5F32-5DBB-46F7-A77B-5514DC90B36E}
 		{733DE76C-2C79-4130-A472-AE4E1F4F9E44} = {A79DCE70-506A-4B77-BF33-6A001C33079C}
 		{76AB7E3C-762B-4025-9596-B8FFA283B481} = {A79DCE70-506A-4B77-BF33-6A001C33079C}
+		{5DA8B683-F74E-44ED-9912-7DA2D06D030C} = {599D5F32-5DBB-46F7-A77B-5514DC90B36E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE49C8A7-BCCD-4CBE-BDCF-91BC58E812AA}
