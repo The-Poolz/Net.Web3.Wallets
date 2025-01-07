@@ -1,0 +1,23 @@
+<Project>
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+		<Version>1.2.0</Version>
+		<Authors>ArdenHide, Lomet</Authors>
+		<Company>The-Poolz</Company>
+		<PackageTags>Web3, Ethereum</PackageTags>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/The-Poolz/Net.Web3.EthereumWallet</RepositoryUrl>
+		<PackageReleaseNotes>https://github.com/The-Poolz/Net.Web3.EthereumWallet/releases/tag/v1.2.0</PackageReleaseNotes>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+</Project>

@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<Import Project="..\..\buildConf\.props" />
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<PackageId>Net.Web3.EthereumWallet.Json</PackageId>
+		<Product>Net.Web3.EthereumWallet.Json</Product>
+		<Title>Net.Web3.EthereumWallet.Json is a C# library that adds a Newtonsoft.Json converter for the EthereumAddress class from the Net.Web3.EthereumWallet library.</Title>
+		<Description>Net.Web3.EthereumWallet.Json is a C# library that adds a Newtonsoft.Json converter for the EthereumAddress class from the Net.Web3.EthereumWallet library..</Description>
+	</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
