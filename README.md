@@ -14,10 +14,10 @@ Welcome to the **Net.Web3.Wallets** repository!
   - Validate Ethereum addresses and confirm format correctness.  
   - Provide easy conversions (implicit from string, back to string, and equality checks).  
   - Format shortened “display” versions of addresses (e.g., `0x1234...7890`).  
-- **[Read More](https://github.com/The-Poolz/Net.Web3.EthereumWallet/blob/master/README.md)**
+- **[Read More](https://github.com/The-Poolz/Net.Web3.Wallets/blob/master/src/Net.Web3.EthereumWallet/README.md)**
 
 ### Net.Web3.EthereumWallet.Json
 - **Description**: A C# library that integrates with `Newtonsoft.Json` to serialize and deserialize `EthereumAddress` objects defined in **Net.Web3.EthereumWallet**.
 - **Key Features**:  
   - Provides a custom `JsonConverter` so that `EthereumAddress` properties are automatically handled.
-- **[Read More](https://github.com/The-Poolz/Net.Web3.EthereumWallet/blob/master/README.Json.md)**
+- **[Read More](https://github.com/The-Poolz/Net.Web3.Wallets/blob/master/src/Net.Web3.EthereumWallet.Json/README.md)**
