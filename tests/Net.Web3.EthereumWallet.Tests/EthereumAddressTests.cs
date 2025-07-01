@@ -198,4 +198,36 @@ public class EthereumAddressTests
 
         result.Should().BeFalse();
     }
+
+    [Fact]
+    internal void ComparisonOperators_NullEqualsNull()
+    {
+        EthereumAddress? address1 = null;
+        EthereumAddress? address2 = null;
+
+        var result = address1 == address2;
+
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    internal void ComparisonOperators_AddressEqualsNull()
+    {
+        var address1 = new EthereumAddress(ZeroAddress);
+
+        var result = address1 == null;
+
+        result.Should().BeFalse();
+    }
+
+    [Fact]
+    internal void ComparisonOperators_NullNotEqualsAddress()
+    {
+        EthereumAddress? address1 = null;
+        var address2 = new EthereumAddress(ZeroAddress);
+
+        var result = address1 != address2;
+
+        result.Should().BeTrue();
+    }
 }
