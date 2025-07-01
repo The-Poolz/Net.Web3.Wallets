@@ -136,8 +136,10 @@ namespace Net.Web3.EthereumWallet
         /// <param name="left">The first EthereumAddress instance.</param>
         /// <param name="right">The second EthereumAddress instance.</param>
         /// <returns>true if the instances are equal; otherwise, false.</returns>
-        public static bool operator ==(EthereumAddress left, EthereumAddress right)
+        public static bool operator ==(EthereumAddress? left, EthereumAddress? right)
         {
+            if (ReferenceEquals(left, right)) return true;
+            if (left is null || right is null) return false;
             return left.Equals(right);
         }
 
@@ -147,9 +149,9 @@ namespace Net.Web3.EthereumWallet
         /// <param name="left">The first EthereumAddress instance.</param>
         /// <param name="right">The second EthereumAddress instance.</param>
         /// <returns>true if the instances are not equal; otherwise, false.</returns>
-        public static bool operator !=(EthereumAddress left, EthereumAddress right)
+        public static bool operator !=(EthereumAddress? left, EthereumAddress? right)
         {
-            return !left.Equals(right);
+            return !(left == right);
         }
         #endregion
     }
