@@ -214,8 +214,9 @@ public class EthereumAddressTests
     internal void ComparisonOperators_AddressEqualsNull()
     {
         var address1 = new EthereumAddress(ZeroAddress);
+        EthereumAddress? address2 = null;
 
-        var result = address1 == null;
+        var result = address1 == address2;
 
         result.Should().BeFalse();
     }
