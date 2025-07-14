@@ -45,12 +45,9 @@ public class AddressExtensionsTests
         [InlineData("0xdbF03B407c01E7cD3CBea99509d93f8DDDC8C6FB", null, true)]
         [InlineData("0xD1220A0cf47c7B9Be7A2E6BA89F429762e7b9aDb", null, true)]
 
-        public void ValidateAddress(string address, int? network, bool isValid)
+        public void ValidateStringAddress(string address, int? network, bool isValid)
         {
             var result = address.IsChecksumAddress(network);
-            result.Should().Be(isValid);
-
-            result = new EthereumAddress(address).IsChecksumAddress(network);
             result.Should().Be(isValid);
         }
     }

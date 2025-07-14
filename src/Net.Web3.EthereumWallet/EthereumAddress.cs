@@ -30,7 +30,7 @@ namespace Net.Web3.EthereumWallet
                 throw new ArgumentException($"Ethereum address '{address}' is invalid.", nameof(address));
             }
 
-            Address = address;
+            Address = address.IsChecksumAddress() ? address : address.ConvertToChecksumAddress();
         }
 
         /// <summary>
